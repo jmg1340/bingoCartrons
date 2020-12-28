@@ -1,0 +1,89 @@
+*{
+	margin: 0 auto;
+	width: 800px;
+}
+
+body{
+	margin-top: 50px;
+}
+
+
+
+
+#generacioCartrons{
+	display: inline;
+}
+
+#generacioCartrons button, #generacioCartrons input{
+	width: 10%;
+
+}
+
+
+
+
+.botonsCartrons {
+	width: 35%;
+	
+}
+
+
+
+
+
+.cartro{
+	/*border: 1px solid blue;*/
+	padding-top: 20px;
+}
+
+.cartro  > div{
+	/*border: 2px solid green;*/
+	/*background-color: green;*/
+	display: table-cell;
+	
+}
+
+.cartro .divEspaiCartro{
+	width: 80%;
+}
+
+.cartro .divEspaiCheckbox {
+	text-align: center;
+	vertical-align: middle;	
+}
+
+
+input{
+	width: 20%;
+	text-align: center;
+	/*border: 3px solid black;*/
+}
+
+caption {
+	text-align: left;
+}
+
+table{
+	border-collapse: collapse;
+	width: 100%;
+	border: 3px solid black;
+}
+
+td{
+	border: 1px solid black;
+	text-align: center;
+	height: 40px;
+}
+
+
+.numeroCantat{
+	background-color: lightgreen;
+}
+
+.numeroNoCantat{
+	background-color: white;
+}
+
+.casellaBuida{
+	background-color: gray;
+}

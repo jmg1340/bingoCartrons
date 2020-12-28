@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cartrons Bingo</title>
+
+	<script src="js/vue.js"></script>
+	<script src="js/cartrons.js"></script>
+
+
+	<link rel="stylesheet" href="css/cartrons.css">	
+</head>
+
+<body>
+
+	<div id="content">
+		
+		<div v-if="preguntaGeneracioCartrons" id="generacioCartrons" >
+			<label>Cartrons a generar:</label>
+			<input type="number" v-model="numeroCartrons" placeholder="numero de cartrons">
+			<button @click="generarCartrons(numeroCartrons)">Generar</button>
+		</div>
+		
+		
+		<!-- <div v-if="seleccionarTriarCartrons">
+			<div>
+				<span @click="mes()">+</span><span>{{ numeroCartronsUtilitzats }}</span><span @click="menys()">-</span>
+				<button @click="cartronsManuals">Triar cartrons aleatoriament</button>
+			</div>
+
+			<button @click="cartronsManuals()">Triar cartrons manualment</button>
+		</div> -->
+
+		
+		<div v-if="mostrarCartronsGenerats">
+			<button class="botonsCartrons" @click="jugarAmbCartronsSeleccionats()">Jugar amb els cartrons seleccionats</button>
+			<div v-for="cartro in cartrons" class="cartro">
+				<p>Cartro nº: {{ cartro.numCartro }}</p>
+				<div class="divEspaiCartro">
+					<table>
+						<tr v-for="fila in cartro.numeros">
+							<td v-bind:class="{ casellaBuida: fila.unitats.numero == null }">{{fila.unitats.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec10.numero == null }">{{fila.Dec10.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec20.numero == null }">{{fila.Dec20.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec30.numero == null }">{{fila.Dec30.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec40.numero == null }">{{fila.Dec40.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec50.numero == null }">{{fila.Dec50.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec60.numero == null }">{{fila.Dec60.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec70.numero == null }">{{fila.Dec70.numero}}</td>
+							<td v-bind:class="{ casellaBuida: fila.Dec80.numero == null }">{{fila.Dec80.numero}}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="divEspaiCheckbox">
+					<input type="checkbox" v-model="cartro.seleccionat"> 
+				</div>
+			</div>
+
+		</div>
+
+		<div v-if="mostrarCartronsSeleccionats">
+			<button class="botonsCartrons" @click="seleccionarAltresCartrons()">Seleccionar altres cartrons</button>
+			<div v-for="cartro in cartrons" v-if="cartro.seleccionat" class="cartro">
+				<p>Cartro nº: {{ cartro.numCartro }}</p>
+				<table>
+					<caption>Cartro nº: {{ cartro.numCartro }}</caption>
+					<tr v-for="fila in cartro.numeros">
+						<td @click="marcar(fila.unitats)" v-bind:class="{ numeroCantat: fila.unitats.seleccionat,
+																numeroNoCantat: !fila.unitats.seleccionat,
+																casellaBuida: fila.unitats.numero == null }">{{fila.unitats.numero}}</td>
+						<td @click="marcar(fila.Dec10)" v-bind:class="{ numeroCantat: fila.Dec10.seleccionat,
+																numeroNoCantat: !fila.Dec10.seleccionat,
+																casellaBuida: fila.Dec10.numero == null }">{{fila.Dec10.numero}}</td>
+						<td @click="marcar(fila.Dec20)" v-bind:class="{ numeroCantat: fila.Dec20.seleccionat,
+																numeroNoCantat: !fila.Dec20.seleccionat,
+																casellaBuida: fila.Dec20.numero == null }">{{fila.Dec20.numero}}</td>
+						<td @click="marcar(fila.Dec30)" v-bind:class="{ numeroCantat: fila.Dec30.seleccionat,
+																numeroNoCantat: !fila.Dec30.seleccionat,
+																casellaBuida: fila.Dec30.numero == null }">{{fila.Dec30.numero}}</td>
+						<td @click="marcar(fila.Dec40)" v-bind:class="{ numeroCantat: fila.Dec40.seleccionat,
+																numeroNoCantat: !fila.Dec40.seleccionat,
+																casellaBuida: fila.Dec40.numero == null }">{{fila.Dec40.numero}}</td>
+						<td @click="marcar(fila.Dec50)" v-bind:class="{ numeroCantat: fila.Dec50.seleccionat,
+																numeroNoCantat: !fila.Dec50.seleccionat,
+																casellaBuida: fila.Dec50.numero == null }">{{fila.Dec50.numero}}</td>
+						<td @click="marcar(fila.Dec60)" v-bind:class="{ numeroCantat: fila.Dec60.seleccionat,
+																numeroNoCantat: !fila.Dec60.seleccionat,
+																casellaBuida: fila.Dec60.numero == null }">{{fila.Dec60.numero}}</td>
+						<td @click="marcar(fila.Dec70)" v-bind:class="{ numeroCantat: fila.Dec70.seleccionat,
+																numeroNoCantat: !fila.Dec70.seleccionat,
+																casellaBuida: fila.Dec70.numero == null }">{{fila.Dec70.numero}}</td>
+						<td @click="marcar(fila.Dec80)" v-bind:class="{ numeroCantat: fila.Dec80.seleccionat,
+																numeroNoCantat: !fila.Dec80.seleccionat,
+																casellaBuida: fila.Dec80.numero == null }">{{fila.Dec80.numero}}</td>
+					</tr>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
